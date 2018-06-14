@@ -2,6 +2,17 @@
 
 LibreNMS is not very plentiful with their example alerts. It took me a significant amount of time to come up with the following alerts so I thought I would create a repository to retain them in the event that I need to rebuild my LibreNMS server in the future. Or, of course, so others could see my examples as well.
 
+# Telegram alerting (Markdown support) hack
+
+Open file: LibreNMS/Alert/Transport/Telegram.php
+Search for the line: 38
+
+```curl_setopt($curl, CURLOPT_URL, ("https://api.telegram.org/bot{$data['token']}/sendMessage?chat_id={$data['chat_id']}&text=$text"));```
+
+And replace it with:
+
+```curl_setopt($curl, CURLOPT_URL, ("https://api.telegram.org/bot{$data['token']}/sendMessage?chat_id={$data['chat_id']}&text=$text&parse_mode=Markdown"));```
+
 
 ## Included alerts 
 
