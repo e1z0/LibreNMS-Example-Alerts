@@ -50,16 +50,14 @@ _This table holds all of my example LibreNMS alerts._
 
 _LibreNMS allows you to customize the alert message that is sent to your transport endpoint. The following is my default message. I did not bother with additional templates._
 
-**Alert Title:** `LibreNMS (%hostname) - NEW ALERT`    
-**Recovery Title:** `LibreNMS (%hostname) - CANCELLATION`  
+**Alert Title:** `%hostname - *NEW ALERT* -`    
+**Recovery Title:** `%hostname - *OK* -`  
 **Alert Body:**  
 ```
-{if %state == 0}Duration: %elapsed{else}Severity: %severity{/if}
-
-{if %name}%name{else}%rule{/if}
----------------------------
-Timestamp: %timestamp
-Uptime: %uptime_long
+%title {if %name}%name{else}%rule{/if}
+{if %state == 0}Duration: *%elapsed *{else}Severity: *%severity *{/if}
+_Timestamp: %timestamp _                               
+_Uptime: %uptime_long _
 ```
 
 
@@ -77,6 +75,6 @@ _At this time several of the above rules are either not working or flawed. I hav
 
 ## Alert Example 
 
-_The following is a screenshot of my phone displaying several push notifications using the above rules and templates in conjunction with Pusbullet as my transport endpoint._
+_The following is a screenshot of my phone displaying several push notifications using the above rules and templates in conjunction with Telegram as my transport endpoint._
 
-![](https://raw.githubusercontent.com/zimmertr/Librenms-Example-Alerts/master/alert_example.png?s=70)
+![](https://raw.githubusercontent.com/e1z0/Librenms-Example-Alerts/master/Screenshot%20at%20Jun%2015%2008-45-05.png?s=70)
